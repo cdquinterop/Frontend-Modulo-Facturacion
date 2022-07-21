@@ -1,0 +1,96 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <h4 class="title">Facturas</h4>
+                                <p class="category">Lista de facturas</p>
+                            </div>
+                            <div style="margin-top: 24px;" class="col-md-2"> <button type="button"
+                                    class="btn btn-secondary" (click)="onDownloadReport()"><span
+                                        style="margin-right: 8px;">Reporte</span> <i
+                                        class="fa pe-7s-download"></i></button></div>
+                        </div>
+
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th *ngFor="let cell of tableData1.headerRow">{{ cell }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    *ngFor="let row of tableData1.dataRows | slice: (page-1) * pageSize : page * pageSize">
+                                    <td>{{row.nro_factura}}</td>
+                                    <td>{{row.cliente_cedula}}</td>
+                                    <td>{{row.tipo_pago==='efectivo'? 'Efectivo':'Crédito'}}</td>
+                                    <td>{{row.fecha | date :'dd/MM/yyyy'}}</td>
+                                    <td>{{row.subtotal | number:'1.0-2'}}</td>
+                                    <td>{{row.iva | number:'1.0-2'}}</td>
+                                    <td>{{row.total | number:'1.0-2'}}</td>
+                                    <td>
+
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                {{row.estado?
+                                                'Activa':'Anulada'}}
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button style="margin-right: 8px;" type="button"
+                                            class="btn btn-sm btn-secondary" (click)="onDownloadInvoice(row)"> <i
+                                                class="fa pe-7s-download"></i></button>
+                                        <button (click)="deleteFactura(row)" type="button"
+                                            class="btn btn-sm btn-danger"><i class="fa pe-7s-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- <tr *ngFor="let row of tableData1.dataRows">
+                                    <td>{{row.nro_factura}}</td>
+                                    <td>{{row.cliente_cedula}}</td>
+                                    <td>{{row.tipo_pago==='efectivo'? 'Efectivo':'Crédito'}}</td>
+                                    <td>{{row.fecha | date :'dd/MM/yyyy'}}</td>
+                                    <td>{{row.subtotal | number:'1.0-2'}}</td>
+                                    <td>{{row.iva | number:'1.0-2'}}</td>
+                                    <td>{{row.total | number:'1.0-2'}}</td>
+                                    <td>
+
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                {{row.estado?
+                                                'Activa':'Anulada'}}
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button (click)="deleteFactura(row)" type="button"
+                                            class="btn btn-sm btn-danger"><i class="fa pe-7s-trash"></i></button>
+                                    </td>
+
+                                </tr> -->
+                            </tbody>
+                            <tfoot>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ngb-pagination [(page)]="page" [pageSize]="pageSize"
+                                            [collectionSize]="tableData1.dataRows.length"></ngb-pagination>
+                                    </div>
+                                </div>
+                            </tfoot>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

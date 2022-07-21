@@ -1,0 +1,25 @@
+.mat-form-field {
+  width: 100%;
+  margin-top: 28px;
+}
+::ng-deep .mat-select-value {
+  color: #565656 !important;
+}
+::ng-deep .modal-dialog {
+  width: 900px !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: #fff;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  color: #565656;
+  height: 40px;
+  box-shadow: none;
+}
+::ng-deep .mat-select-placeholder {
+  color: #565656;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 5px 0;
+}
